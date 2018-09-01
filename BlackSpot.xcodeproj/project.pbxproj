@@ -14,6 +14,8 @@
 		5410C28F213A44F9009FAE21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5410C28D213A44F9009FAE21 /* LaunchScreen.storyboard */; };
 		546E76E2213B0BC700BBB36B /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E76E1213B0BC700BBB36B /* ListViewController.swift */; };
 		546E76E4213B0C7D00BBB36B /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E76E3213B0C7D00BBB36B /* NewsViewController.swift */; };
+		546E76E6213B1ADF00BBB36B /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E76E5213B1ADF00BBB36B /* NewsItem.swift */; };
+		546E76E8213B2CED00BBB36B /* NewsBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E76E7213B2CED00BBB36B /* NewsBank.swift */; };
 		548193B5213A98A10078BA46 /* BackSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548193B4213A98A10078BA46 /* BackSpot.swift */; };
 		548193B7213A99240078BA46 /* BlackSpotBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548193B6213A99240078BA46 /* BlackSpotBank.swift */; };
 		E80386F6D3B65CCA2C0C334F /* Pods_BlackSpot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE5BCE83494D069922BB7DDF /* Pods_BlackSpot.framework */; };
@@ -29,6 +31,8 @@
 		5410C290213A44F9009FAE21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		546E76E1213B0BC700BBB36B /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		546E76E3213B0C7D00BBB36B /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		546E76E5213B1ADF00BBB36B /* NewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
+		546E76E7213B2CED00BBB36B /* NewsBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsBank.swift; sourceTree = "<group>"; };
 		548193B4213A98A10078BA46 /* BackSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackSpot.swift; sourceTree = "<group>"; };
 		548193B6213A99240078BA46 /* BlackSpotBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackSpotBank.swift; sourceTree = "<group>"; };
 		7DCF49803E091D5190A67489 /* Pods-BlackSpot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlackSpot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlackSpot/Pods-BlackSpot.debug.xcconfig"; sourceTree = "<group>"; };
@@ -79,6 +83,8 @@
 				5410C28B213A44F9009FAE21 /* Assets.xcassets */,
 				5410C28D213A44F9009FAE21 /* LaunchScreen.storyboard */,
 				5410C290213A44F9009FAE21 /* Info.plist */,
+				546E76E5213B1ADF00BBB36B /* NewsItem.swift */,
+				546E76E7213B2CED00BBB36B /* NewsBank.swift */,
 			);
 			path = BlackSpot;
 			sourceTree = "<group>";
@@ -219,6 +225,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				548193B5213A98A10078BA46 /* BackSpot.swift in Sources */,
+				546E76E6213B1ADF00BBB36B /* NewsItem.swift in Sources */,
+				546E76E8213B2CED00BBB36B /* NewsBank.swift in Sources */,
 				548193B7213A99240078BA46 /* BlackSpotBank.swift in Sources */,
 				5410C287213A44F4009FAE21 /* ViewController.swift in Sources */,
 				546E76E4213B0C7D00BBB36B /* NewsViewController.swift in Sources */,

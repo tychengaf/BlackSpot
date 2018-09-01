@@ -8,20 +8,45 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
 
+    @IBOutlet weak var myTableView: UITableView!
+    
+    let allBlackSpot = BlackSpotBank()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        myTableView.dataSource = self
+        myTableView.delegate = self
     }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return allBlackSpot.list.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+        cell.textLabel?.text = allBlackSpot.list[indexPath.row].locationName
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func newsButtonPressed(_ sender: Any) {
+        
+    }
+    
+    @IBAction func mapButtonPressed(_ sender: Any) {
+        dismiss(animated: false, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

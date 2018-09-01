@@ -39,6 +39,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
     }
 
+//    override func prepare(for segue:UIStoryboardSegue, sender: Any?){
+//        if segue.identifier == "goToNews"{
+//            let newsVC = segue.destination as! NewsViewController
+//        }
+//        if segue.identifier == "goToList"{
+//            let listVC = segue.destination as! ListViewController
+//        }
+//    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -86,7 +94,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         var distance: Double
         var tempSmallestDist: Double = 0
         var index = 0
-        for i in 0...74{
+        for i in 0...(allBlackSpots.list.count-1){
             distance = distanceInKmBetweenEarthCoordinates(lat1:gpsLat, lon1:gpsLong, lat2:allBlackSpots.list[i].latitude, lon2:allBlackSpots.list[i].longtitude)
             if distance < 5 {
                 createAnnotation(lat: allBlackSpots.list[i].latitude, long: allBlackSpots.list[i].longtitude)
