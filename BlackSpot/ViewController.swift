@@ -19,7 +19,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var distanceLabel: UILabel!
     
     let locationManager = CLLocationManager()
-
+    let dataModel = DataModel()
+    
     let URL = "https://maps.googleapis.com/maps/api/geocode/json?"
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,7 +105,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
             
-            print("longtitude = \(location.coordinate.longitude), latitude = \(location.coordinate.latitude)")
+            print("longitude = \(location.coordinate.longitude), latitude = \(location.coordinate.latitude)")
             let latlong:String = "\(location.coordinate.latitude),\(location.coordinate.longitude)"
             print(latlong)
 //          

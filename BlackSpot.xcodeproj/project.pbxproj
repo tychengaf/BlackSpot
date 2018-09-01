@@ -12,6 +12,7 @@
 		5410C28A213A44F4009FAE21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5410C288213A44F4009FAE21 /* Main.storyboard */; };
 		5410C28C213A44F9009FAE21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5410C28B213A44F9009FAE21 /* Assets.xcassets */; };
 		5410C28F213A44F9009FAE21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5410C28D213A44F9009FAE21 /* LaunchScreen.storyboard */; };
+		5410C297213A8587009FAE21 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5410C296213A8587009FAE21 /* DataModel.swift */; };
 		E80386F6D3B65CCA2C0C334F /* Pods_BlackSpot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE5BCE83494D069922BB7DDF /* Pods_BlackSpot.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 		5410C28B213A44F9009FAE21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5410C28E213A44F9009FAE21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5410C290213A44F9009FAE21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5410C296213A8587009FAE21 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		7DCF49803E091D5190A67489 /* Pods-BlackSpot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlackSpot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlackSpot/Pods-BlackSpot.debug.xcconfig"; sourceTree = "<group>"; };
 		B4C746DC4062BE88B3DBFB03 /* Pods-BlackSpot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlackSpot.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlackSpot/Pods-BlackSpot.release.xcconfig"; sourceTree = "<group>"; };
 		DE5BCE83494D069922BB7DDF /* Pods_BlackSpot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlackSpot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				5410C284213A44F4009FAE21 /* AppDelegate.swift */,
+				5410C296213A8587009FAE21 /* DataModel.swift */,
 				5410C286213A44F4009FAE21 /* ViewController.swift */,
 				5410C288213A44F4009FAE21 /* Main.storyboard */,
 				5410C28B213A44F9009FAE21 /* Assets.xcassets */,
@@ -162,15 +165,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-BlackSpot-checkManifestLockResult.txt",
 			);
@@ -184,8 +183,6 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BlackSpot/Pods-BlackSpot-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
@@ -194,8 +191,6 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Material.framework",
@@ -216,6 +211,7 @@
 			files = (
 				5410C287213A44F4009FAE21 /* ViewController.swift in Sources */,
 				5410C285213A44F4009FAE21 /* AppDelegate.swift in Sources */,
+				5410C297213A8587009FAE21 /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
