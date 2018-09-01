@@ -46,15 +46,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
                 print("Success! Got the Name data")
                 
                 let locationNameJSON : JSON = JSON(response.result.value!)
-                print(locationNameJSON)
+               // print(locationNameJSON)
                 self.updateLocationDataData(json: locationNameJSON)
                 let locationvalue = locationNameJSON["results"][1]["address_components"][0]["short_name"].stringValue
                 print(locationvalue,"wtf")
                 self.currentLocationLabel.text = locationvalue
+                
+                let testBlackSpot = self.dataModel.blackSpotArray[30]["name"]
+                print(testBlackSpot,"hi")
+                self.accidentBlackSpotLabel.text = testBlackSpot
             }
             else{
                 print("Error \(response.result.error)")
-//                self.label1.text = "Connection Issues"
+                self.currentLocationLabel.text = "Connection Issues"
             }
         }
     }
