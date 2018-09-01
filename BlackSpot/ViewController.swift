@@ -20,6 +20,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
 
+    @IBAction func listButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToList", sender: self)
+    }
+    
+    @IBAction func newsButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToNews", sender: self)
+    }
     let locationManager = CLLocationManager()
     let allBlackSpots = BlackSpotBank()// create Object that contain all BlackSpot Class
     
