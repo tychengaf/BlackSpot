@@ -19,7 +19,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var distanceLabel: UILabel!
     
     let locationManager = CLLocationManager()
-    let allBlackSpots = BlackSpotBank()
+    let allBlackSpots = BlackSpotBank()// create Bank Object
     
     let URL = "https://maps.googleapis.com/maps/api/geocode/json?"
     override func viewDidLoad() {
@@ -47,14 +47,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
                 
                 let locationNameJSON : JSON = JSON(response.result.value!)
                // print(locationNameJSON)
-                self.updateLocationDataData(json: locationNameJSON)
+                //self.updateLocationData(json: locationNameJSON)
                 let locationvalue = locationNameJSON["results"][1]["address_components"][0]["short_name"].stringValue
                 print(locationvalue,"wtf")
                 self.currentLocationLabel.text = locationvalue
                 
-                let testBlackSpot: String = self.allBlackSpots.list[1].locationName
-                print(testBlackSpot,"hi")
-                self.accidentBlackSpotLabel.text = testBlackSpot
+                
+                
+//                let testBlackSpot: String = self.allBlackSpots.list[1].locationName
+//                print(testBlackSpot,"hi")
+//                self.accidentBlackSpotLabel.text = testBlackSpot
             }
             else{
                 print("Error \(response.result.error)")
@@ -63,9 +65,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         }
     }
 
-    func updateLocationDataData(json: JSON){
+//    func updateLocationData(json: JSON){
+//
+//    }
     
+    func fineShortestDistance(gpsLat:Double,gpsLong: Double)-> Double{
+        var distanceArray = [Double]()
+        var distance: Double
+        var tempSmallestDist: Double = 0
+        var index = 0
+        for i in 0...74{
+            distance = distanceInKmBetweenEarthCoordinates(lat1:gpsLat, lon1:gpsLong, lat2:allBlackSpots.list[i].latitude, lon2:allBlackSpots.list[i].longtitude)
+            if i == 0{
+                tempSmallestDist = distance
+            }
+            else if distance < tempSmallestDist{
+                tempSmallestDist = distance
+                index = i
+            }
+            distanceArray.append(distance)
+            print(allBlackSpots.list[i].latitude, allBlackSpots.list[i].longtitude,distance )
+//            allBlackSpots.list[i].distanceWithGPSLocation = distanceInKmBetweenEarthCoordinates(lat1:gpsLat, lon1:gpsLong, lat2:allBlackSpots.list[i].latitude, lon2:allBlackSpots.list[i].longtitude)
+            
+        }
+        accidentBlackSpotLabel.text = allBlackSpots.list[index].locationName
+        print(distanceArray.min()!)
+        return tempSmallestDist
     }
+    
     
     //MARK: - GPS
     /***************************************************************/
@@ -100,6 +127,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     
     
     
+    
+    
+    
+    
+    
     //MARK: - tap GPS
     /***************************************************************/
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -111,6 +143,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
             
             print("longitude = \(location.coordinate.longitude), latitude = \(location.coordinate.latitude)")
             let latlong:String = "\(location.coordinate.latitude),\(location.coordinate.longitude)"
+            
+            //insert calculation
+            
+            let shortestDistance = fineShortestDistance(gpsLat: location.coordinate.latitude,gpsLong: location.coordinate.longitude)*100.rounded()/100
+            
+            distanceLabel.text = String(format: "%.2f", shortestDistance) + " km"
+            
             print(latlong)
 //          
 //            print(distanceInKmBetweenEarthCoordinates(lat1: location.coordinate.latitude, lon1: location.coordinate.longitude, lat2: 22.444525, lon2: 114.029518))
