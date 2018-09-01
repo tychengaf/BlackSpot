@@ -169,6 +169,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             
             //MAP SHIT
             /************************************/
+            let span = MKCoordinateSpanMake(0.025,0.025)
+            let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), span: span)
+            mapView.setRegion(region, animated: true)
             let gpsLocation = MKPointAnnotation()
             gpsLocation.title = "YOU"
             gpsLocation.coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
