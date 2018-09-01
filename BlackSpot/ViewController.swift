@@ -19,7 +19,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var distanceLabel: UILabel!
     
     let locationManager = CLLocationManager()
-    let dataModel = DataModel()
+    let allBlackSpots = BlackSpotBank()
     
     let URL = "https://maps.googleapis.com/maps/api/geocode/json?"
     override func viewDidLoad() {
@@ -52,7 +52,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
                 print(locationvalue,"wtf")
                 self.currentLocationLabel.text = locationvalue
                 
-                let testBlackSpot = self.dataModel.blackSpotArray[30]["name"]
+                let testBlackSpot: String = self.allBlackSpots.list[1].locationName
                 print(testBlackSpot,"hi")
                 self.accidentBlackSpotLabel.text = testBlackSpot
             }

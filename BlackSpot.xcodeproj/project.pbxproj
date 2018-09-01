@@ -12,7 +12,8 @@
 		5410C28A213A44F4009FAE21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5410C288213A44F4009FAE21 /* Main.storyboard */; };
 		5410C28C213A44F9009FAE21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5410C28B213A44F9009FAE21 /* Assets.xcassets */; };
 		5410C28F213A44F9009FAE21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5410C28D213A44F9009FAE21 /* LaunchScreen.storyboard */; };
-		5410C297213A8587009FAE21 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5410C296213A8587009FAE21 /* DataModel.swift */; };
+		548193B5213A98A10078BA46 /* BackSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548193B4213A98A10078BA46 /* BackSpot.swift */; };
+		548193B7213A99240078BA46 /* BlackSpotBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548193B6213A99240078BA46 /* BlackSpotBank.swift */; };
 		E80386F6D3B65CCA2C0C334F /* Pods_BlackSpot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE5BCE83494D069922BB7DDF /* Pods_BlackSpot.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +25,8 @@
 		5410C28B213A44F9009FAE21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5410C28E213A44F9009FAE21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5410C290213A44F9009FAE21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5410C296213A8587009FAE21 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		548193B4213A98A10078BA46 /* BackSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackSpot.swift; sourceTree = "<group>"; };
+		548193B6213A99240078BA46 /* BlackSpotBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackSpotBank.swift; sourceTree = "<group>"; };
 		7DCF49803E091D5190A67489 /* Pods-BlackSpot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlackSpot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlackSpot/Pods-BlackSpot.debug.xcconfig"; sourceTree = "<group>"; };
 		B4C746DC4062BE88B3DBFB03 /* Pods-BlackSpot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlackSpot.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlackSpot/Pods-BlackSpot.release.xcconfig"; sourceTree = "<group>"; };
 		DE5BCE83494D069922BB7DDF /* Pods_BlackSpot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlackSpot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,12 +66,13 @@
 			isa = PBXGroup;
 			children = (
 				5410C284213A44F4009FAE21 /* AppDelegate.swift */,
-				5410C296213A8587009FAE21 /* DataModel.swift */,
 				5410C286213A44F4009FAE21 /* ViewController.swift */,
 				5410C288213A44F4009FAE21 /* Main.storyboard */,
 				5410C28B213A44F9009FAE21 /* Assets.xcassets */,
 				5410C28D213A44F9009FAE21 /* LaunchScreen.storyboard */,
 				5410C290213A44F9009FAE21 /* Info.plist */,
+				548193B4213A98A10078BA46 /* BackSpot.swift */,
+				548193B6213A99240078BA46 /* BlackSpotBank.swift */,
 			);
 			path = BlackSpot;
 			sourceTree = "<group>";
@@ -209,9 +212,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				548193B5213A98A10078BA46 /* BackSpot.swift in Sources */,
+				548193B7213A99240078BA46 /* BlackSpotBank.swift in Sources */,
 				5410C287213A44F4009FAE21 /* ViewController.swift in Sources */,
 				5410C285213A44F4009FAE21 /* AppDelegate.swift in Sources */,
-				5410C297213A8587009FAE21 /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
