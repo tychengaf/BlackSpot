@@ -19,17 +19,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBOutlet weak var accidentBlackSpotLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
-    
+
     let locationManager = CLLocationManager()
-    let allBlackSpots = BlackSpotBank()// create Bank Object
+    let allBlackSpots = BlackSpotBank()// create Object that contain all BlackSpot Class
     
     let URL = "https://maps.googleapis.com/maps/api/geocode/json?"
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         updateGPSLocation()
-
-     
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,6 +37,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         // Dispose of any resources that can be recreated.
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     //MARK: - Networking
     /***************************************************************/
@@ -51,15 +54,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                // print(locationNameJSON)
                 //self.updateLocationData(json: locationNameJSON)
                 let locationvalue = locationNameJSON["results"][1]["address_components"][0]["short_name"].stringValue
-                print(locationvalue,"wtf")
+                print(locationvalue)
                 self.currentLocationLabel.text = locationvalue
-                
-                
-                
-                
+
 //                let testBlackSpot: String = self.allBlackSpots.list[1].locationName
 //                print(testBlackSpot,"hi")
 //                self.accidentBlackSpotLabel.text = testBlackSpot
+                
             }
             else{
                 print("Error \(response.result.error)")
@@ -79,6 +80,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         var index = 0
         for i in 0...74{
             distance = distanceInKmBetweenEarthCoordinates(lat1:gpsLat, lon1:gpsLong, lat2:allBlackSpots.list[i].latitude, lon2:allBlackSpots.list[i].longtitude)
+           
             if i == 0{
                 tempSmallestDist = distance
             }
@@ -93,6 +95,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
         accidentBlackSpotLabel.text = allBlackSpots.list[index].locationName
         print(distanceArray.min()!)
+        //MAP STUFF FOR BLACK SPOT
+        /************************************/
+        let blackLocation = MKPointAnnotation()
+        blackLocation.title = "BLACKSPOT"
+        blackLocation.coordinate = CLLocationCoordinate2D(latitude: allBlackSpots.list[index].latitude, longitude: allBlackSpots.list[index].longtitude)
+        mapView.addAnnotation(blackLocation)
+        
         return tempSmallestDist
     }
     
@@ -121,7 +130,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         let nlat1 = degreesToRadians(degrees: lat1);
         let nlat2 = degreesToRadians(degrees: lat2);
-        
+        //Darwin in action
         let a = sin(dLat/2) * sin(dLat/2) +
             sin(dLon/2) * sin(dLon/2) * cos(nlat1) * cos(nlat2);
         let c = 2 * atan2(sqrt(a), sqrt(1-a));
@@ -163,19 +172,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             
             //insert calculation
             
-            let shortestDistance = fineShortestDistance(gpsLat: location.coordinate.latitude,gpsLong: location.coordinate.longitude)*100.rounded()/100
+            let shortestDistance = fineShortestDistance(gpsLat: location.coordinate.latitude,gpsLong: location.coordinate.longitude)//*100.rounded()/100
             
             distanceLabel.text = String(format: "%.2f", shortestDistance) + " km"
             
-            //MAP SHIT
+            //MAP STUFF FOR CURRENT POSITION
             /************************************/
-            let span = MKCoordinateSpanMake(0.025,0.025)
+            let span = MKCoordinateSpanMake(0.12,0.12)
             let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), span: span)
             mapView.setRegion(region, animated: true)
-            let gpsLocation = MKPointAnnotation()
-            gpsLocation.title = "YOU"
-            gpsLocation.coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            mapView.addAnnotation(gpsLocation)
+//            let gpsLocation = MKPointAnnotation()
+//            gpsLocation.title = "YOU"
+//            gpsLocation.coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+//            mapView.addAnnotation(gpsLocation)
             
             print(latlong)
 //          
