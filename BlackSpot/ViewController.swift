@@ -9,11 +9,18 @@
 import UIKit
 import CoreLocation
 import Darwin
+import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController, CLLocationManagerDelegate{
 
-    let locationManager = CLLocationManager()
+    @IBOutlet weak var currentLocationLabel: UILabel!
+    @IBOutlet weak var accidentBlackSpotLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     
+    let locationManager = CLLocationManager()
+
+    let URL = "https://maps.googleapis.com/maps/api/geocode/json?"
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -27,13 +34,46 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         // Dispose of any resources that can be recreated.
     }
 
+    
+    //MARK: - Networking
+    /***************************************************************/
+    func getLocationNameData(url: String, parameters: [String: String]){
+        print("first")
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON {
+            response in
+            if response.result.isSuccess{
+                print("Success! Got the Name data")
+                
+                let locationNameJSON : JSON = JSON(response.result.value!)
+                print(locationNameJSON)
+                self.updateLocationDataData(json: locationNameJSON)
+                print("here")
+               
+            }
+            else{
+                print("Error \(response.result.error)")
+//                self.label1.text = "Connection Issues"
+            }
+        }
+    }
 
+    func updateLocationDataData(json: JSON){
+    
+    }
+    
+    //MARK: - GPS
+    /***************************************************************/
     func updateGPSLocation(){
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
+    
+    
+    
+    //MARK: - Distance Calculation
+    /***************************************************************/
     func degreesToRadians(degrees: Double) -> Double{
         return degrees * Double.pi / 180;
     }
@@ -52,6 +92,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         return earthRadiusKm * c;
     }
     
+    
+    
+    //MARK: - tap GPS
+    /***************************************************************/
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[locations.count - 1]
         if location.horizontalAccuracy > 0 {
@@ -60,13 +104,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
             locationManager.delegate = nil
             
             print("longtitude = \(location.coordinate.longitude), latitude = \(location.coordinate.latitude)")
-            print("here")
-            let longtitude = String(location.coordinate.longitude)
-            let latitude = String(location.coordinate.latitude)
-          
-            print(distanceInKmBetweenEarthCoordinates(lat1: location.coordinate.latitude, lon1: location.coordinate.longitude, lat2: 22.444525, lon2: 114.029518))
-
+            let latlong:String = "\(location.coordinate.latitude),\(location.coordinate.longitude)"
+            print(latlong)
+//          
+//            print(distanceInKmBetweenEarthCoordinates(lat1: location.coordinate.latitude, lon1: location.coordinate.longitude, lat2: 22.444525, lon2: 114.029518))
+            let params : [String : String] = ["latlng": latlong, "sensor": "true"]
             //function to compare
+             getLocationNameData(url: URL, parameters: params)
         }
         
         
