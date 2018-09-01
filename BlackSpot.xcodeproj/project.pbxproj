@@ -67,12 +67,12 @@
 			children = (
 				5410C284213A44F4009FAE21 /* AppDelegate.swift */,
 				5410C286213A44F4009FAE21 /* ViewController.swift */,
+				548193B4213A98A10078BA46 /* BackSpot.swift */,
+				548193B6213A99240078BA46 /* BlackSpotBank.swift */,
 				5410C288213A44F4009FAE21 /* Main.storyboard */,
 				5410C28B213A44F9009FAE21 /* Assets.xcassets */,
 				5410C28D213A44F9009FAE21 /* LaunchScreen.storyboard */,
 				5410C290213A44F9009FAE21 /* Info.plist */,
-				548193B4213A98A10078BA46 /* BackSpot.swift */,
-				548193B6213A99240078BA46 /* BlackSpotBank.swift */,
 			);
 			path = BlackSpot;
 			sourceTree = "<group>";

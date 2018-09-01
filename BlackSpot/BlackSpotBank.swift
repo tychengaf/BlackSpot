@@ -12,16 +12,7 @@ class BlackSpotBank {
     var list = [BlackSpot]()
     
     init(){
-        
-//        // Creating a quiz item and appending it to the list
-//        let item = BlackSpot(name:"Oi Lai Street", lat: 22.333333, long: 123.222222)
-//
-//        // Add the Question to the list of questions
-//        list.append(item)
-//
-//        // skipping one step and just creating the quiz item inside the append function
-//        list.append(BlackSpot(name:"jkldsjf;lksadfjlksdjfs", lat: 33.322133, long: 143.242422))
-//
+
         let item = BlackSpot(name:"ARGYLE STREET, LOMOND ROAD", lat: 22.324869, long: 114.185719)
         list.append(item)
         list.append(BlackSpot(name:"ARGYLE STREET, SAI YEE STREET", lat: 22.319686, long: 114.171643))

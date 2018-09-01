@@ -72,7 +72,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 //    func updateLocationData(json: JSON){
 //
 //    }
-    
+    //MARK: - Distance Calculation from current to all black spot
+    /***************************************************************/
     func fineShortestDistance(gpsLat:Double,gpsLong: Double)-> Double{
         var distanceArray = [Double]()
         var distance: Double
@@ -80,7 +81,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         var index = 0
         for i in 0...74{
             distance = distanceInKmBetweenEarthCoordinates(lat1:gpsLat, lon1:gpsLong, lat2:allBlackSpots.list[i].latitude, lon2:allBlackSpots.list[i].longtitude)
-           
+            if distance < 5 {
+                createAnnotation(lat: allBlackSpots.list[i].latitude, long: allBlackSpots.list[i].longtitude)
+            }
             if i == 0{
                 tempSmallestDist = distance
             }
@@ -105,6 +108,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return tempSmallestDist
     }
     
+    func createAnnotation(lat: Double, long: Double){
+        
+    }
     
     //MARK: - GPS
     /***************************************************************/
