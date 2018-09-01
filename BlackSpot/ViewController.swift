@@ -44,7 +44,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     //MARK: - Networking
     /***************************************************************/
     func getLocationNameData(url: String, parameters: [String: String]){
-        print("first")
+        
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON {
             response in
             if response.result.isSuccess{
@@ -53,12 +53,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 let locationNameJSON : JSON = JSON(response.result.value!)
                // print(locationNameJSON)
                 //self.updateLocationData(json: locationNameJSON)
-                let locationvalue = locationNameJSON["results"][1]["address_components"][0]["short_name"].stringValue
-                print(locationvalue)
-                self.currentLocationLabel.text = locationvalue
+                let locationValue = locationNameJSON["results"][1]["address_components"][0]["short_name"].stringValue
+                print(locationValue)
+                self.currentLocationLabel.text = locationValue
 
 //                let testBlackSpot: String = self.allBlackSpots.list[1].locationName
-//                print(testBlackSpot,"hi")
+//                print(testBlackSpot)
 //                self.accidentBlackSpotLabel.text = testBlackSpot
                 
             }
