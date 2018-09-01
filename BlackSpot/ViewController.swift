@@ -11,12 +11,14 @@ import CoreLocation
 import Darwin
 import Alamofire
 import SwiftyJSON
+import MapKit
 
-class ViewController: UIViewController, CLLocationManagerDelegate{
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
 
     @IBOutlet weak var currentLocationLabel: UILabel!
     @IBOutlet weak var accidentBlackSpotLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
     
     let locationManager = CLLocationManager()
     let allBlackSpots = BlackSpotBank()// create Bank Object
@@ -51,6 +53,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
                 let locationvalue = locationNameJSON["results"][1]["address_components"][0]["short_name"].stringValue
                 print(locationvalue,"wtf")
                 self.currentLocationLabel.text = locationvalue
+                
                 
                 
                 
@@ -126,7 +129,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     
-    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else { return nil }
+        
+        let identifier = "Annotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView!.canShowCallout = true
+        } else {
+            annotationView!.annotation = annotation
+        }
+        
+        return annotationView
+    }
     
     
     
@@ -149,6 +166,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
             let shortestDistance = fineShortestDistance(gpsLat: location.coordinate.latitude,gpsLong: location.coordinate.longitude)*100.rounded()/100
             
             distanceLabel.text = String(format: "%.2f", shortestDistance) + " km"
+            
+            //MAP SHIT
+            /************************************/
+            let gpsLocation = MKPointAnnotation()
+            gpsLocation.title = "YOU"
+            gpsLocation.coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            mapView.addAnnotation(gpsLocation)
             
             print(latlong)
 //          

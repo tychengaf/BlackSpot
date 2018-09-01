@@ -106,6 +106,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RWl-yC-kUS">
+                                <rect key="frame" x="0.0" y="237" width="375" height="256"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="0.99444375264364682" green="1" blue="0.73664171758418329" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -114,6 +118,7 @@
                         <outlet property="accidentBlackSpotLabel" destination="26b-GM-0vH" id="WJi-tV-k9q"/>
                         <outlet property="currentLocationLabel" destination="reM-Uf-Dyw" id="ifH-d2-lIB"/>
                         <outlet property="distanceLabel" destination="wAB-He-0p0" id="Ebx-nP-zSP"/>
+                        <outlet property="mapView" destination="RWl-yC-kUS" id="ndw-bm-7Wn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
