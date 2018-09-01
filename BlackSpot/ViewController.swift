@@ -47,8 +47,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
                 let locationNameJSON : JSON = JSON(response.result.value!)
                 print(locationNameJSON)
                 self.updateLocationDataData(json: locationNameJSON)
-                print("here")
-               
+                let locationvalue = locationNameJSON["results"][1]["address_components"][0]["short_name"].stringValue
+                print(locationvalue,"wtf")
+                self.currentLocationLabel.text = locationvalue
             }
             else{
                 print("Error \(response.result.error)")
