@@ -43,7 +43,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         updateGPSLocation()
         refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(ViewController.refresh(_:)), for: .valueChanged)
-        timer = Timer.scheduledTimer(timeInterval: 15.0, target: self, selector:#selector(ViewController.refreshEvery15Secs), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector:#selector(ViewController.refreshEvery15Secs), userInfo: nil, repeats: true)
     
         
     }
@@ -142,11 +142,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         dangerousLevel.text = allBlackSpots.presentDangerousLevel(level: allBlackSpots.list[index].dangerousLevel)
         //MAP STUFF FOR BLACK SPOT
         /************************************/
-        let blackLocation = MKPointAnnotation()
-        blackLocation.title = "BLACKSPOT"
-        blackLocation.coordinate = CLLocationCoordinate2D(latitude: allBlackSpots.list[index].latitude, longitude: allBlackSpots.list[index].longtitude)
-        mapView.addAnnotation(blackLocation)
-        
+//        let blackLocation = MKPointAnnotation()
+//        blackLocation.title = "BLACKSPOT"
+//        blackLocation.coordinate = CLLocationCoordinate2D(latitude: allBlackSpots.list[index].latitude, longitude: allBlackSpots.list[index].longtitude)
+//        mapView.addAnnotation(blackLocation)
+        annoArray[index].title = "CLOSEST"
         return tempSmallestDist
     }
     
@@ -231,9 +231,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             
             distanceLabel.text = String(format: "%.2f", shortestDistance) + " km   "
             
-            //MAP STUFF FOR CURRENT POSITION
+            //MAP STUFF FOR CURRENT POSITION    22.425561    114.21326
             /************************************/
-            let span = MKCoordinateSpanMake(0.12,0.12)
+            let span = MKCoordinateSpanMake(0.09,0.09)
             let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), span: span)
             mapView.setRegion(region, animated: true)
 //            let gpsLocation = MKPointAnnotation()
