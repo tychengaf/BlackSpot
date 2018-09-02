@@ -19,7 +19,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBOutlet weak var accidentBlackSpotLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
-
+    @IBOutlet weak var dangerousLevel: UILabel!
+    
     @IBAction func listButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "goToList", sender: self)
     }
@@ -113,6 +114,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
         accidentBlackSpotLabel.text = allBlackSpots.list[index].locationName
         print(distanceArray.min()!)
+        dangerousLevel.text = allBlackSpots.presentDangerousLevel(level: allBlackSpots.list[index].dangerousLevel)
         //MAP STUFF FOR BLACK SPOT
         /************************************/
         let blackLocation = MKPointAnnotation()

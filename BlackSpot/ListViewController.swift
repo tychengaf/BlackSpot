@@ -28,7 +28,9 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-        cell.textLabel?.text = allBlackSpot.list[indexPath.row].locationName
+        cell.textLabel?.text = allBlackSpot.presentDangerousLevel(level: allBlackSpot.list[indexPath.row].dangerousLevel) + "\n" + allBlackSpot.list[indexPath.row].locationName
+        cell.textLabel?.numberOfLines = 0;
+        
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -46,6 +48,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func mapButtonPressed(_ sender: Any) {
         dismiss(animated: false, completion: nil)
     }
+    
+    
     
     /*
     // MARK: - Navigation
