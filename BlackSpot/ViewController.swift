@@ -15,6 +15,9 @@ import MapKit
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
 
+    var timer: Timer!
+    var refresher: UIRefreshControl!
+    
     @IBOutlet weak var currentLocationLabel: UILabel!
     @IBOutlet weak var accidentBlackSpotLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
@@ -37,9 +40,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         // Do any additional setup after loading the view, typically from a nib.
         
         updateGPSLocation()
+        refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(ViewController.refresh(_:)), for: .valueChanged)
+        timer = Timer.scheduledTimer(timeInterval: 15.0, target: self, selector:#selector(ViewController.refreshEvery15Secs), userInfo: nil, repeats: true)
+    
         
     }
 
+    @objc func refreshEvery15Secs(){
+        print("refreshed")
+    }
+    
+    @objc func refresh(_ sender: AnyObject){
+        
+        refreshEvery15Secs() // calls when ever button is pressed
+    }
 //    override func prepare(for segue:UIStoryboardSegue, sender: Any?){
 //        if segue.identifier == "goToNews"{
 //            let newsVC = segue.destination as! NewsViewController
