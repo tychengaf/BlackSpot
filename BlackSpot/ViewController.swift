@@ -17,6 +17,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 
     var timer: Timer!
     var refresher: UIRefreshControl!
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     @IBOutlet weak var currentLocationLabel: UILabel!
     @IBOutlet weak var accidentBlackSpotLabel: UILabel!
@@ -48,6 +49,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
 
     @objc func refreshEvery15Secs(){
+        updateGPSLocation()
         print("refreshed")
     }
     
@@ -86,7 +88,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 //self.updateLocationData(json: locationNameJSON)
                 let locationValue = locationNameJSON["results"][1]["address_components"][0]["short_name"].stringValue
                 print(locationValue)
-                self.currentLocationLabel.text = locationValue
+                self.currentLocationLabel.text = "   " + locationValue
 
 //                let testBlackSpot: String = self.allBlackSpots.list[1].locationName
 //                print(testBlackSpot)
@@ -97,6 +99,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 print("Error \(response.result.error)")
                 self.currentLocationLabel.text = "Connection Issues"
             }
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
         }
     }
 
@@ -107,14 +111,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     /***************************************************************/
     func fineShortestDistance(gpsLat:Double,gpsLong: Double)-> Double{
         var distanceArray = [Double]()
+        var annoArray = [MKPointAnnotation]()
         var distance: Double
         var tempSmallestDist: Double = 0
         var index = 0
         for i in 0...(allBlackSpots.list.count-1){
+            annoArray.append(MKPointAnnotation())
             distance = distanceInKmBetweenEarthCoordinates(lat1:gpsLat, lon1:gpsLong, lat2:allBlackSpots.list[i].latitude, lon2:allBlackSpots.list[i].longtitude)
-            if distance < 5 {
-                createAnnotation(lat: allBlackSpots.list[i].latitude, long: allBlackSpots.list[i].longtitude)
-            }
+           
+               // createAnnotation(lat: allBlackSpots.list[i].latitude, long: allBlackSpots.list[i].longtitude)
+                //let gpsLocation = MKPointAnnotation()
+                
+                annoArray[i].coordinate = CLLocationCoordinate2D(latitude: allBlackSpots.list[i].latitude, longitude: allBlackSpots.list[i].longtitude)
+                mapView.addAnnotation(annoArray[i])
+            
             if i == 0{
                 tempSmallestDist = distance
             }
@@ -127,7 +137,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 //            allBlackSpots.list[i].distanceWithGPSLocation = distanceInKmBetweenEarthCoordinates(lat1:gpsLat, lon1:gpsLong, lat2:allBlackSpots.list[i].latitude, lon2:allBlackSpots.list[i].longtitude)
             
         }
-        accidentBlackSpotLabel.text = allBlackSpots.list[index].locationName
+        accidentBlackSpotLabel.text = "   \(allBlackSpots.list[index].locationName)"
         print(distanceArray.min()!)
         dangerousLevel.text = allBlackSpots.presentDangerousLevel(level: allBlackSpots.list[index].dangerousLevel)
         //MAP STUFF FOR BLACK SPOT
@@ -147,6 +157,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     //MARK: - GPS
     /***************************************************************/
     func updateGPSLocation(){
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
@@ -212,7 +229,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             
             let shortestDistance = fineShortestDistance(gpsLat: location.coordinate.latitude,gpsLong: location.coordinate.longitude)//*100.rounded()/100
             
-            distanceLabel.text = String(format: "%.2f", shortestDistance) + " km"
+            distanceLabel.text = String(format: "%.2f", shortestDistance) + " km   "
             
             //MAP STUFF FOR CURRENT POSITION
             /************************************/
