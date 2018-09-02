@@ -285,7 +285,7 @@
                                     <outlet property="delegate" destination="chQ-uX-Y9G" id="RWI-B9-Rng"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Traffic News" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFc-dD-pSl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Traffic Notices" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFc-dD-pSl">
                                 <rect key="frame" x="0.0" y="20" width="375" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="V8X-kP-vBT"/>
