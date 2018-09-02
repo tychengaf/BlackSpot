@@ -133,7 +133,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 index = i
             }
             distanceArray.append(distance)
-            print(allBlackSpots.list[i].latitude, allBlackSpots.list[i].longtitude,distance )
+           // print(allBlackSpots.list[i].latitude, allBlackSpots.list[i].longtitude,distance )
 //            allBlackSpots.list[i].distanceWithGPSLocation = distanceInKmBetweenEarthCoordinates(lat1:gpsLat, lon1:gpsLong, lat2:allBlackSpots.list[i].latitude, lon2:allBlackSpots.list[i].longtitude)
             
         }
