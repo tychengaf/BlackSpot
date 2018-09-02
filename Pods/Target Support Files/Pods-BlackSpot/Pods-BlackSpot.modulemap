@@ -1,0 +1,6 @@
+framework module Pods_BlackSpot {
+  umbrella header "Pods-BlackSpot-umbrella.h"
+
+  export *
+  module * { export * }
+}
