@@ -30,6 +30,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         cell.textLabel?.text = allBlackSpot.presentDangerousLevel(level: allBlackSpot.list[indexPath.row].dangerousLevel) + "\n" + allBlackSpot.list[indexPath.row].locationName
         cell.textLabel?.numberOfLines = 0;
+        cell.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 17.0)
         
         return cell
     }

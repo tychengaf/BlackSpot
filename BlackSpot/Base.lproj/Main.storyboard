@@ -264,18 +264,18 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Ef-WV-ipo">
-                                <rect key="frame" x="0.0" y="58" width="375" height="549"/>
+                                <rect key="frame" x="0.0" y="61" width="375" height="531"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="375" id="6wg-PE-rT3"/>
                                     <constraint firstAttribute="height" constant="549" id="GYy-Cf-eFc"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="DNc-6G-FRs">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="65" id="DNc-6G-FRs">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DNc-6G-FRs" id="ytG-IP-iIq" customClass="TableView" customModule="Material">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -303,7 +303,8 @@
                             <constraint firstItem="4Ef-WV-ipo" firstAttribute="leading" secondItem="LCr-bx-iI2" secondAttribute="leading" id="DPh-Hr-j0Q"/>
                             <constraint firstItem="4Ef-WV-ipo" firstAttribute="trailing" secondItem="LCr-bx-iI2" secondAttribute="trailing" id="O5X-r5-qUH"/>
                             <constraint firstItem="5gd-wM-Q5s" firstAttribute="top" secondItem="4Ef-WV-ipo" secondAttribute="bottom" id="Wzw-Nb-GJy"/>
-                            <constraint firstItem="4Ef-WV-ipo" firstAttribute="top" secondItem="LCr-bx-iI2" secondAttribute="top" constant="38" id="ZfL-dq-Dwt"/>
+                            <constraint firstItem="5gd-wM-Q5s" firstAttribute="top" secondItem="4Ef-WV-ipo" secondAttribute="bottom" constant="15" id="X0k-Nm-faa"/>
+                            <constraint firstItem="4Ef-WV-ipo" firstAttribute="top" secondItem="eFc-dD-pSl" secondAttribute="bottom" constant="2" id="aHF-Fd-vby"/>
                             <constraint firstItem="eFc-dD-pSl" firstAttribute="trailing" secondItem="LCr-bx-iI2" secondAttribute="trailing" id="h15-9e-Gi3"/>
                             <constraint firstItem="5gd-wM-Q5s" firstAttribute="leading" secondItem="LCr-bx-iI2" secondAttribute="leading" id="j5H-Yo-ltx"/>
                             <constraint firstItem="5gd-wM-Q5s" firstAttribute="trailing" secondItem="LCr-bx-iI2" secondAttribute="trailing" id="lhw-pB-wNq"/>
@@ -317,7 +318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ziy-eH-H8G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="954" y="133"/>
+            <point key="canvasLocation" x="794.39999999999998" y="915.29235382308855"/>
         </scene>
     </scenes>
     <resources>

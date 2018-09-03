@@ -36,6 +36,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         cell.textLabel?.text = allNews.list[indexPath.row].newsTitle
         cell.textLabel?.numberOfLines = 0;
+        cell.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 17.0)
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
